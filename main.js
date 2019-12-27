@@ -1,30 +1,44 @@
-const { app, BrowserWindow, shell, ipcMain } = require('electron')
+const { app, shell, ipcMain } = require('electron')
 const contextMenu = require('electron-context-menu')
-const url = require('url')
 const path = require('path')
+const Window = require('./js/Window')
 
 console.log('starting main process js')
 
-let win
-
-const createWindow = () => {
-    win = new BrowserWindow({
+const main = () => {
+    const mainWindow = new Window({
+        file: path.join('renderer', 'index.html'),
         width: 800,
         height: 600,
         webPreferences: {
             nodeIntegration: true
         }
     })
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'renderer', 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }))
 
-    // show dev tools
-    win.webContents.openDevTools()
+    // -----  COLOR LAB  -----
+    let colorLabWindow
+
+    // create color lab window
+    ipcMain.on('add-color-lab-window', () => {
+        if (!colorLabWindow) {
+            colorLabWindow = new Window({
+                file: path.join('renderer', 'color-lab', 'color-lab.html'),
+                width: 400,
+                height: 300,
+                webPreferences: {
+                    nodeIntegration: true
+                },
+                parent: mainWindow
+            })
+
+            colorLabWindow.on('closed', () => {
+                colorLabWindow = null
+            })
+        }
+    })
 }
 
+// create/configure the context (right-click) menu
 contextMenu({
     // eslint-disable-next-line no-unused-vars
     prepend: (defaultActions, params, browserWindow) => [
@@ -39,4 +53,5 @@ contextMenu({
     ]
 })
 
-app.on('ready', createWindow)
+
+app.on('ready', main)

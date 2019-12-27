@@ -7,29 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Another Electron App</title>
 
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
-<body>
+<body id="colorLabBody">
 
     <div class="container">
         <div class="text-center">
-            <h1>Hello, App!</h1>
-            <img src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" width="200" alt="Eplehant">
+            <h1 id="colorLabTitle" class="mt-3">Color Lab</h1>
 
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col">
-                         <button id="colorLabButton" class="btn btn-info" type="button">Color Lab</button>
-                    </div>
-                    <div class="col">
-                        2
-                    </div>
-                    <div class="col">
-                        3
-                    </div>
-                </div>
-            </div>
+            <button id="colorizeButton" class="btn btn-info mt-4" type="button">Colorize Me, Cap'n!</button>
         </div>
     </div>
 
@@ -41,7 +28,7 @@
     <script>require('bootstrap');</script>
 
     <!-- Script imports -->
-    <script src="./index.js"></script>
+    <script src="./color-lab.js"></script>
 
     <!-- Insert this line after script imports -->
     <script>if (window.module) module = window.module;</script>
