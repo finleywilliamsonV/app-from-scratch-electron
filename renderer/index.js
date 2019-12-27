@@ -1,4 +1,5 @@
 console.log('starting renderer js')
+const $ = require('jquery')
 
 let count = 0
 $('#click-counter').text(count.toString())
