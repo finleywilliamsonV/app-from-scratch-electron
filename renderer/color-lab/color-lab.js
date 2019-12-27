@@ -1,7 +1,5 @@
 const $ = require('jquery')
 
-console.log('starting color lab js')
-
 const getRandomColor = () => {
     const letters = '0123456789ABCDEF'
     let color = '#'
