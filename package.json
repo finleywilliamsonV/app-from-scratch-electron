@@ -17,8 +17,10 @@
     "eslint-plugin-import": "^2.19.1"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "electron-store": "^5.1.0",
     "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
     "spectre.css": "^0.5.8"
   },
   "build": {
