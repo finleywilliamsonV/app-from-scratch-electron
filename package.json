@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "electron-store": "^5.1.0",
+    "jquery": "^3.4.1",
     "spectre.css": "^0.5.8"
   },
   "build": {
