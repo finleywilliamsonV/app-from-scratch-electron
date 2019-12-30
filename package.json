@@ -22,7 +22,8 @@
     "electron-store": "^5.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
-    "spectre.css": "^0.5.8"
+    "spectre.css": "^0.5.8",
+    "doggo-api-wrapper": "^1.0.1"
   },
   "build": {
     "dmg": {

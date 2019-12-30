@@ -5,13 +5,25 @@ const Window = require('./js/Window')
 const isJokeClean = require('./renderer/joke-lab/joke-filter')
 
 const main = () => {
-    const mainWindow = new Window({
+    let mainWindow = new Window({
         file: path.join('renderer', 'index.html'),
         width: 600,
         height: 375,
         webPreferences: {
             nodeIntegration: true
         }
+    })
+
+    // Emitted when the window is closed.
+    mainWindow.on('closed', () => {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null
+    })
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.openDevTools()
+        mainWindow.maximize()
     })
 
     // -----  COLOR LAB  -----
