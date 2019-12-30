@@ -15,7 +15,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "linebreak-style": ["error", "windows"],
+        "linebreak-style": 0,
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
         "semi": ["error", "never"],
         "comma-dangle": 0,
