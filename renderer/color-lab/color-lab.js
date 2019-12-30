@@ -1,6 +1,5 @@
 const $ = require('jquery')
 const DogAPI = require('../../js/doggo')
-// const { DogAPI, sayHello } = require('../../js/doggo')
 
 const myDogAPI = new DogAPI()
 

@@ -14,10 +14,4 @@ class DogAPI {
     }
 }
 
-
-// function sayHello() {
-//     console.log('hello world')
-// }
-// module.exports = { DogAPI, sayHello }
-
 module.exports = DogAPI
