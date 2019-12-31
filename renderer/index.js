@@ -8,3 +8,7 @@ $('#colorLabButton').on('click', () => {
 $('#jokeLabButton').on('click', () => {
     ipcRenderer.send('add-joke-lab-window')
 })
+
+$('#ffiLabButton').on('click', () => {
+    ipcRenderer.send('add-ffi-lab-window')
+})

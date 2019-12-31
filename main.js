@@ -39,7 +39,7 @@ const main = () => {
     // -----  JOKE LAB  -----
     let jokeLabWindow
 
-    // create color lab window
+    // create joke lab window
     ipcMain.on('add-joke-lab-window', () => {
         if (!jokeLabWindow) {
             jokeLabWindow = new Window({
@@ -90,6 +90,28 @@ const main = () => {
         // make the request
         if (args.url) {
             makeRequest(args.url)
+        }
+    })
+
+    // -----  FFI LAB  -----
+    let ffiLabWindow
+
+    // create ffi lab window
+    ipcMain.on('add-ffi-lab-window', () => {
+        if (!ffiLabWindow) {
+            ffiLabWindow = new Window({
+                file: path.join('renderer', 'ffi-lab', 'ffi-lab.html'),
+                width: 400,
+                height: 300,
+                webPreferences: {
+                    nodeIntegration: true
+                },
+                parent: mainWindow
+            })
+
+            ffiLabWindow.on('closed', () => {
+                ffiLabWindow = null
+            })
         }
     })
 }
