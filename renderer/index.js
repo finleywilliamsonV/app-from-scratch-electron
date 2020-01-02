@@ -1,5 +1,6 @@
 const { ipcRenderer } = require('electron')
 const $ = require('jquery')
+const ffi = require('ffi')
 
 $('#colorLabButton').on('click', () => {
     ipcRenderer.send('add-color-lab-window')
@@ -7,4 +8,8 @@ $('#colorLabButton').on('click', () => {
 
 $('#jokeLabButton').on('click', () => {
     ipcRenderer.send('add-joke-lab-window')
+})
+
+$('#ffi').on('click', () => {
+    console.log('ffi', ffi)
 })
