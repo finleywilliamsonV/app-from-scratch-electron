@@ -21,7 +21,6 @@ const TPCANTimestamp = Struct({
 })
 
 const TPCANMsg = Struct({
-    // eslint-disable-next-line quote-props
     'ID': ulong,
     'MSGTYPE': byte,
     'LEN': byte,
@@ -32,7 +31,8 @@ const TPCANMsgPtr = ref.refType(TPCANMsg)
 let PCANBasic = ffi.Library('./PCANBasic.dll', {
   "CAN_Initialize": [ TPCANStatus, [ TPCANHandle, TPCANBaudrate, 'int', 'int', 'int' ] ],
   'CAN_Read': [TPCANStatus, [TPCANHandle, TPCANMsgPtr, TPCANTimestamp ]],
-  'CAN_Write': [TPCANStatus, [TPCANHandle, TPCANMsg, TPCANTimestamp ]]
+  'CAN_Write': [TPCANStatus, [TPCANHandle, TPCANMsg, TPCANTimestamp ]],
+
 //   "create_object": [ myobjPtr, [] ],
 //   "do_stuff_with_object": [ "double", [ myobjPtr ] ],
 //   "use_string_with_object": [ "void", [ myobjPtr, "string" ] ],
@@ -51,7 +51,6 @@ let TPCANInit = new TPCANMsg({
 })
 
 $('#PCANWrite').on('click', () => {
-    console.log('ffiTypes', ffiTypes);
     console.log(PCANBasic.CAN_Write(PCAN_USBBUS1, TPCANInit, 0));
 })
 

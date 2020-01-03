@@ -18,7 +18,7 @@
         "linebreak-style": 0,
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
         "semi": ["warning", "never"],
-        "quotes" : 0,
+        "quote-props" : ["warning", "consistent-as-needed"],
         "comma-dangle": 0,
         "indent": ["error", 4],
         "arrow-parens": 0,
