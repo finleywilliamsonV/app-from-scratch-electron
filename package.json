@@ -7,10 +7,11 @@
     "start": "electron .",
     "dev": "electron . dev",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "rebuild": "./node_modules/.bin/electron-rebuild"
   },
   "devDependencies": {
-    "electron": "4.0.0",
+    "electron": "^4.0.0",
     "electron-builder": "^21.2.0",
     "electron-rebuild": "^1.8.8",
     "eslint": "^6.8.0",

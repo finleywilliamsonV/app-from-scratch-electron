@@ -14,6 +14,8 @@ const main = () => {
         }
     })
 
+    mainWindow.maximize()
+
     // -----  COLOR LAB  -----
     let colorLabWindow
 
