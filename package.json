@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "dgram": "^1.0.1",
     "electron-context-menu": "^0.15.1",
     "electron-store": "^5.1.0",
     "ffi": "^2.3.0",

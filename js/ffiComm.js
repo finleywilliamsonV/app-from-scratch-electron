@@ -13,10 +13,10 @@ const TPCANBaudrate = ushort
 
 const TPCANTimestamp = Struct({
     // DWORD  millis;             // Base-value: milliseconds: 0.. 2^32-1
-    'millis': ulong,
     // WORD   millis_overflow;    // Roll-arounds of millis
-    'millis_overflow': ushort,
     // WORD   micros;             // Microseconds: 0..999
+    'millis': ulong,
+    'millis_overflow': ushort,
     'micros' : ushort
 })
 
@@ -43,7 +43,7 @@ const PCAN_USBBUS1 = 81
 const PCAN_BAUD_50K = 18223
 PCANBasic.CAN_Initialize(PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0)
 
-let message = new TPCANMsg({
+let TPCANInit = new TPCANMsg({
     'ID': 1536,
     'MSGTYPE': 0,
     'LEN': 1,
@@ -52,7 +52,7 @@ let message = new TPCANMsg({
 
 $('#PCANWrite').on('click', () => {
     console.log('ffiTypes', ffiTypes);
-    console.log(PCANBasic.CAN_Write(PCAN_USBBUS1, message, 0));
+    console.log(PCANBasic.CAN_Write(PCAN_USBBUS1, TPCANInit, 0));
 })
 
 $('#PCANRead').on('click', () => {
