@@ -17,9 +17,11 @@
     "rules": {
         "linebreak-style": 0,
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
-        "semi": ["error", "never"],
+        "no-undef": "warn",
+        "semi": ["warn", "never"],
+        "quotes": "warn",
         "comma-dangle": 0,
-        "indent": ["error", 4],
+        "indent": ["warn", 4],
         "arrow-parens": 0,
         "no-plusplus": 0,
         "no-param-reassign": 0,

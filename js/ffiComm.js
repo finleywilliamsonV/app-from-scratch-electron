@@ -47,7 +47,6 @@ const TPCANMsgFD = Struct({
 })
 const TPCANMsgFDPtr = ref.refType(TPCANMsgFD)
 
-
 // Set up PCANBasic DLL library
 const PCANBasic = ffi.Library('./PCANBasic.dll', {
     CAN_Initialize: [TPCANStatus, [TPCANHandle, TPCANBaudrate, TPCANType, ulong, ushort]],
@@ -65,25 +64,98 @@ const PCANBasic = ffi.Library('./PCANBasic.dll', {
     CAN_GetErrorText: [TPCANStatus, [TPCANStatus, ushort, TPCANBitrateFD]]
 })
 
-// Init DLL
+
+function showInitiatedButtons(show) {
+    if (show) {
+        $('#InitPCAN').hide()
+        $('#PCANButtons').show()
+    } else {
+        $('#PCANButtons').hide()
+        $('#InitPCAN').show()
+    }
+}
+
+// PCAN Send Method
+function sendPCAN(command, inputs) {
+    let status
+    switch (command) {
+    case 'CAN_Initialize':
+        status = PCANBasic.CAN_Initialize(...inputs)
+        break
+    case 'CAN_Uninitialize':
+        status = PCANBasic.CAN_Uninitialize(inputs)
+        break
+    case 'CAN_Reset':
+        status = PCANBasic.CAN_Reset(inputs)
+        break
+    case 'CAN_GetStatus':
+        status = PCANBasic.CAN_GetStatus(inputs)
+        break
+    case 'CAN_Read':
+        status = PCANBasic.CAN_Read(...inputs)
+        break
+    case 'CAN_Write':
+        status = PCANBasic.CAN_Write(...inputs)
+        break
+    case 'CAN_FilterMessages':
+        status = PCANBasic.CAN_FilterMessages(...inputs)
+        break
+    case 'CAN_GetValue':
+        status = PCANBasic.CAN_GetValue(...inputs)
+        break
+    case 'CAN_SetValue':
+        status = PCANBasic.CAN_SetValue(...inputs)
+        break
+    case 'CAN_GetErrorText':
+        status = PCANBasic.CAN_GetErrorText(...inputs)
+        break
+    default:
+        break
+    }
+    if (status !== 0) {
+        console.log(command, 'failed')
+    } else {
+        console.log(command, 'passed')
+        if (command === 'CAN_Initialize') {
+            showInitiatedButtons(true)
+        } else if (command === 'CAN_Uninitialize') {
+            showInitiatedButtons(false)
+        }
+    }
+}
+
+
+// Initialize DLL
 const PCAN_USBBUS1 = 81
 const PCAN_BAUD_50K = 18223
-PCANBasic.CAN_Initialize(PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0)
+sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
 
 // Button events
-const TPCANInit = new TPCANMsg({
+const TPCANWRITEmsg = new TPCANMsg({
     ID: 1536,
     MSGTYPE: 0,
     LEN: 1,
     DATA: [1, 0, 0, 0, 0, 0, 0, 0]
 })
 
+$('#PCANInitialize').on('click', () => {
+    sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
+})
+
+$('#PCANUninitialize').on('click', () => {
+    sendPCAN('CAN_Uninitialize', [PCAN_USBBUS1])
+})
+
 $('#PCANWrite').on('click', () => {
-    console.log(PCANBasic.CAN_Write(PCAN_USBBUS1, TPCANInit, 0))
+    sendPCAN('CAN_Write', [PCAN_USBBUS1, TPCANWRITEmsg, 0])
 })
 
 $('#PCANRead').on('click', () => {
     const emptyMessage = ref.alloc(TPCANMsg)
-    console.log(PCANBasic.CAN_Read(PCAN_USBBUS1, emptyMessage, 0))
-    console.log('READ', emptyMessage.deref())
+    sendPCAN('CAN_Read', [PCAN_USBBUS1, emptyMessage, 0])
+    console.log('emptyMessage', emptyMessage)
+})
+
+$('#PCANReset').on('click', () => {
+    sendPCAN('CAN_Reset', [PCAN_USBBUS1])
 })
