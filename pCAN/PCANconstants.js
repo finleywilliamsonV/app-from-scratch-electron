@@ -1,0 +1,62 @@
+module.exports = Object.freeze({
+    PCAN_NONEBUS: '0x00U', // Undefined/default value for a PCAN bus
+    PCAN_ISABUS1: '0x21U', // PCAN-ISA interface, channel 1
+    PCAN_ISABUS2: '0x22U', // PCAN-ISA interface, channel 2
+    PCAN_ISABUS3: '0x23U', // PCAN-ISA interface, channel 3
+    PCAN_ISABUS4: '0x24U', // PCAN-ISA interface, channel 4
+    PCAN_ISABUS5: '0x25U', // PCAN-ISA interface, channel 5
+    PCAN_ISABUS6: '0x26U', // PCAN-ISA interface, channel 6
+    PCAN_ISABUS7: '0x27U', // PCAN-ISA interface, channel 7
+    PCAN_ISABUS8: '0x28U', // PCAN-ISA interface, channel 8
+    PCAN_DNGBUS1: '0x31U', // PCAN-Dongle/LPT interface, channel 1
+    PCAN_PCIBUS1: '0x41U', // PCAN-PCI interface, channel 1
+    PCAN_PCIBUS2: '0x42U', // PCAN-PCI interface, channel 2
+    PCAN_PCIBUS3: '0x43U', // PCAN-PCI interface, channel 3
+    PCAN_PCIBUS4: '0x44U', // PCAN-PCI interface, channel 4
+    PCAN_PCIBUS5: '0x45U', // PCAN-PCI interface, channel 5
+    PCAN_PCIBUS6: '0x46U', // PCAN-PCI interface, channel 6
+    PCAN_PCIBUS7: '0x47U', // PCAN-PCI interface, channel 7
+    PCAN_PCIBUS8: '0x48U', // PCAN-PCI interface, channel 8
+    PCAN_PCIBUS9: '0x409U', // PCAN-PCI interface, channel 9
+    PCAN_PCIBUS10: '0x40AU', // PCAN-PCI interface, channel 10
+    PCAN_PCIBUS11: '0x40BU', // PCAN-PCI interface, channel 11
+    PCAN_PCIBUS12: '0x40CU', // PCAN-PCI interface, channel 12
+    PCAN_PCIBUS13: '0x40DU', // PCAN-PCI interface, channel 13
+    PCAN_PCIBUS14: '0x40EU', // PCAN-PCI interface, channel 14
+    PCAN_PCIBUS15: '0x40FU', // PCAN-PCI interface, channel 15
+    PCAN_PCIBUS16: '0x410U', // PCAN-PCI interface, channel 16
+    PCAN_USBBUS1: '0x51U', // PCAN-USB interface, channel 1
+    PCAN_USBBUS2: '0x52U', // PCAN-USB interface, channel 2
+    PCAN_USBBUS3: '0x53U', // PCAN-USB interface, channel 3
+    PCAN_USBBUS4: '0x54U', // PCAN-USB interface, channel 4
+    PCAN_USBBUS5: '0x55U', // PCAN-USB interface, channel 5
+    PCAN_USBBUS6: '0x56U', // PCAN-USB interface, channel 6
+    PCAN_USBBUS7: '0x57U', // PCAN-USB interface, channel 7
+    PCAN_USBBUS8: '0x58U', // PCAN-USB interface, channel 8
+    PCAN_USBBUS9: '0x509U', // PCAN-USB interface, channel 9
+    PCAN_USBBUS10: '0x50AU', // PCAN-USB interface, channel 10
+    PCAN_USBBUS11: '0x50BU', // PCAN-USB interface, channel 11
+    PCAN_USBBUS12: '0x50CU', // PCAN-USB interface, channel 12
+    PCAN_USBBUS13: '0x50DU', // PCAN-USB interface, channel 13
+    PCAN_USBBUS14: '0x50EU', // PCAN-USB interface, channel 14
+    PCAN_USBBUS15: '0x50FU', // PCAN-USB interface, channel 15
+    PCAN_USBBUS16: '0x510U', // PCAN-USB interface, channel 16
+    PCAN_PCCBUS1: '0x61U', // PCAN-PC Card interface, channel 1
+    PCAN_PCCBUS2: '0x62U', // PCAN-PC Card interface, channel 2
+    PCAN_LANBUS1: '0x801U', // PCAN-LAN interface, channel 1
+    PCAN_LANBUS2: '0x802U', // PCAN-LAN interface, channel 2
+    PCAN_LANBUS3: '0x803U', // PCAN-LAN interface, channel 3
+    PCAN_LANBUS4: '0x804U', // PCAN-LAN interface, channel 4
+    PCAN_LANBUS5: '0x805U', // PCAN-LAN interface, channel 5
+    PCAN_LANBUS6: '0x806U', // PCAN-LAN interface, channel 6
+    PCAN_LANBUS7: '0x807U', // PCAN-LAN interface, channel 7
+    PCAN_LANBUS8: '0x808U', // PCAN-LAN interface, channel 8
+    PCAN_LANBUS9: '0x809U', // PCAN-LAN interface, channel 9
+    PCAN_LANBUS10: '0x80AU', // PCAN-LAN interface, channel 10
+    PCAN_LANBUS11: '0x80BU', // PCAN-LAN interface, channel 11
+    PCAN_LANBUS12: '0x80CU', // PCAN-LAN interface, channel 12
+    PCAN_LANBUS13: '0x80DU', // PCAN-LAN interface, channel 13
+    PCAN_LANBUS14: '0x80EU', // PCAN-LAN interface, channel 14
+    PCAN_LANBUS15: '0x80FU', // PCAN-LAN interface, channel 15
+    PCAN_LANBUS16: '0x810U', // PCAN-LAN interface, channel 16
+})
