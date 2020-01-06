@@ -113,7 +113,10 @@ function sendPCAN(command, inputs) {
         break
     }
     if (status !== 0) {
-        console.log(command, 'failed')
+        console.log(command, 'failed with code', status)
+        if (command === 'CAN_Initialize') {
+            showInitiatedButtons(true)
+        }
     } else {
         console.log(command, 'passed')
         if (command === 'CAN_Initialize') {
@@ -126,13 +129,20 @@ function sendPCAN(command, inputs) {
 
 
 // Initialize DLL
-const PCAN_USBBUS1 = 81
-const PCAN_BAUD_50K = 18223
+const refPCAN = require('../pCAN/PCANconstants')
+
+// const PCAN_USBBUS1 = 81
+// const PCAN_BAUD_50K = 18223
+// sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
+
+const PCAN_USBBUS1 = parseInt(refPCAN.PCAN_USBBUS1, 16)
+const PCAN_BAUD_50K = parseInt(refPCAN.PCAN_BAUD_50K, 16)
 sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
+
 
 // Temporary variables
 const TPCANWRITEmsg = new TPCANMsg({
-    ID: 1536,
+    ID: refPCAN.COPfront1,
     MSGTYPE: 0,
     LEN: 1,
     DATA: [1, 0, 0, 0, 0, 0, 0, 0]
@@ -165,22 +175,22 @@ $('#PCANWrite').on('click', () => {
     sendPCAN('CAN_Write', [PCAN_USBBUS1, TPCANWRITEmsg, 0])
 })
 
-// CAN_FilterMessages: [TPCANStatus, [TPCANHandle, ulong, ulong, TPCANMode]],
-$('#PCAN_FilterMessages').on('click', () => {
-    sendPCAN('CAN_FilterMessages', [PCAN_USBBUS1, 0, 0, 0])
-})
+// CAN_FilterMessages: [TPCANStatus, [TPCANHandle, FromID, ToID, TPCANMode]],
+// $('#PCAN_FilterMessages').on('click', () => {
+//     sendPCAN('CAN_FilterMessages', [PCAN_USBBUS1, 0, 0, 0])
+// })
 
-// CAN_GetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, ulong]],
-$('#PCAN_GetValue').on('click', () => {
-    sendPCAN('CAN_GetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
-})
+// // CAN_GetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, BufferLength]],
+// $('#PCAN_GetValue').on('click', () => {
+//     sendPCAN('CAN_GetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
+// })
 
-// CAN_SetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, ulong]],
-$('#PCAN_SetValue').on('click', () => {
-    sendPCAN('CAN_SetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
-})
+// // CAN_SetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, BufferLength]],
+// $('#PCAN_SetValue').on('click', () => {
+//     sendPCAN('CAN_SetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
+// })
 
-// CAN_GetErrorText: [TPCANStatus, [TPCANStatus, ushort, TPCANBitrateFD]]
-$('#PCAN_GetErrorText').on('click', () => {
-    sendPCAN('CAN_GetErrorText', [PCAN_USBBUS1, 0, 0])
-})
+// // CAN_GetErrorText: [TPCANStatus, [TPCANStatus, ushort, TPCANBitrateFD]]
+// $('#PCAN_GetErrorText').on('click', () => {
+//     sendPCAN('CAN_GetErrorText', [PCAN_USBBUS1, 0, PCAN_BAUD_50K])
+// })
