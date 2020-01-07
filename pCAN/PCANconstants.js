@@ -6,7 +6,6 @@ module.exports = Object.freeze({
     COPrear2: 1539, // x603 = rear 2
 
     // Currently defined and supported PCAN channels
-    //
     PCAN_NONEBUS: '0x00U', // Undefined/default value for a PCAN bus
     PCAN_ISABUS1: '0x21U', // PCAN-ISA interface, channel 1
     PCAN_ISABUS2: '0x22U', // PCAN-ISA interface, channel 2
@@ -69,7 +68,6 @@ module.exports = Object.freeze({
     PCAN_LANBUS16: '0x810U', // PCAN-LAN interface, channel 16
 
     // Represent the PCAN error and status codes
-    //
     PCAN_ERROR_OK: '0x00000U', // No error
     PCAN_ERROR_XMTFULL: '0x00001U', // Transmit buffer in CAN controller is full
     PCAN_ERROR_OVERRUN: '0x00002U', // CAN controller was read too late
@@ -100,7 +98,6 @@ module.exports = Object.freeze({
     PCAN_ERROR_ILLOPERATION: '0x8000000U', // Invalid operation [Value was changed from 0x80000 to 0x8000000]
 
     // PCAN devices
-    //
     PCAN_NONE: '0x00U', // Undefined, unknown or not selected PCAN device value
     PCAN_PEAKCAN: '0x01U', // PCAN Non-Plug&Play devices. NOT USED WITHIN PCAN-Basic API
     PCAN_ISA: '0x02U', // PCAN-ISA, PCAN-PC/104, and PCAN-PC/104-Plus
@@ -112,7 +109,6 @@ module.exports = Object.freeze({
     PCAN_LAN: '0x08U', // PCAN Gateway devices
 
     // PCAN parameters
-    //
     PCAN_DEVICE_NUMBER: '0x01U', // PCAN-USB device number parameter
     PCAN_5VOLTS_POWER: '0x02U', // PCAN-PC Card 5-Volt power parameter
     PCAN_RECEIVE_EVENT: '0x03U', // PCAN receive event handler parameter
@@ -150,7 +146,6 @@ module.exports = Object.freeze({
     PCAN_ACCEPTANCE_FILTER_29BIT: '0x23U', // Filter over code and mask patterns for 29-Bit messages
 
     // PCAN parameter values
-    //
     PCAN_PARAMETER_OFF: '0x00U', // The PCAN parameter is not set (inactive)
     PCAN_PARAMETER_ON: '0x01U', // The PCAN parameter is set (active)
     PCAN_FILTER_CLOSE: '0x00U', // The PCAN filter is closed. No messages will be received
@@ -182,7 +177,6 @@ module.exports = Object.freeze({
     SERVICE_STATUS_RUNNING: '0x04U', // The service is running
 
     // PCAN message types
-    //
     PCAN_MESSAGE_STANDARD: '0x00U', // The PCAN message is a CAN Standard Frame (11-bit identifier)
     PCAN_MESSAGE_RTR: '0x01U', // The PCAN message is a CAN Remote-Transfer-Request Frame
     PCAN_MESSAGE_EXTENDED: '0x02U', // The PCAN message is a CAN Extended Frame (29-bit identifier)
@@ -193,7 +187,6 @@ module.exports = Object.freeze({
     PCAN_MESSAGE_STATUS: '0x80U', // The PCAN message represents a PCAN status message
 
     // Frame Type / Initialization Mode
-    //
     PCAN_MODE_STANDARD: this.PCAN_MESSAGE_STANDARD,
     PCAN_MODE_EXTENDED: this.PCAN_MESSAGE_EXTENDED,
 
@@ -201,7 +194,6 @@ module.exports = Object.freeze({
     // You can define your own Baud rate with the BTROBTR1 register.
     // Take a look at www.peak-system.com for our free software "BAUDTOOL"
     // to calculate the BTROBTR1 register for every bit rate and sample point.
-    //
     PCAN_BAUD_1M: '0x0014U', //   1 MBit/s
     PCAN_BAUD_800K: '0x0016U', // 800 kBit/s
     PCAN_BAUD_500K: '0x001CU', // 500 kBit/s
@@ -218,7 +210,6 @@ module.exports = Object.freeze({
     PCAN_BAUD_5K: '0x7F7FU', //   5 kBit/s
 
     // Type of PCAN (non plug&play) hardware
-    //
     PCAN_TYPE_ISA: '0x01U', // PCAN-ISA 82C200
     PCAN_TYPE_ISA_SJA: '0x09U', // PCAN-ISA SJA1000
     PCAN_TYPE_ISA_PHYTEC: '0x04U', // PHYTEC ISA
@@ -226,4 +217,12 @@ module.exports = Object.freeze({
     PCAN_TYPE_DNG_EPP: '0x03U', // PCAN-Dongle EPP 82C200
     PCAN_TYPE_DNG_SJA: '0x05U', // PCAN-Dongle SJA1000
     PCAN_TYPE_DNG_SJA_EPP: '0x06U', // PCAN-Dongle EPP SJA1000
+
+    // The current languages available for translation are:
+    NeutralLanguage: '0x00',
+    German: '0x07',
+    English: '0x09',
+    Spanish: '0x0A',
+    Italian: '0x10',
+    French: '0x0C',
 })

@@ -98,37 +98,28 @@ const dgram = require('dgram')
 
 // This uses the JSON structure to "bit-pack" manually
 const heartbeatBuffer = []
-DSCHeartbeatJSON["Packet"].forEach(params => {
-    for (let param in params )
-    {
-        let item = params[param]
-        if ( item["Type"] == "Byte" )
-        {
-            heartbeatBuffer.push(item["Value"])
-        }
-        else if ( item["Type"] == "UInt16" || item["Type"] == "UInt32" )
-        {
-            let value = item["Value"]
-            let forLength = item["Type"] == "UInt16" ? 1 : 3;
-            for ( i = forLength; i >= 0; i-- )
-            {
-                let val = (value >> (i*8) ) % 256;
+DSCHeartbeatJSON.Packet.forEach(params => {
+    params.forEach((param) => {
+        const item = params[param]
+        if (item.Type === 'Byte') {
+            heartbeatBuffer.push(item.Value)
+        } else if (item.Type === 'UInt16' || item.Type === 'UInt32') {
+            const value = item.Value
+            const forLength = item.Type === 'UInt16' ? 1 : 3
+            for (let i = forLength; i >= 0; i--) {
+                const val = (value >> (i * 8)) % 256
                 heartbeatBuffer.push(val)
             }
-        }
-        else if ( item["Type"] == "Array" )
-        {
-            let arrayLength = item["Value"].length
-            for ( i = 0; i < arrayLength; i++ )
-            {
-                heartbeatBuffer.push(item["Value"][i])
+        } else if (item.Type === 'Array') {
+            const arrayLength = item.Value.length
+            for (let i = 0; i < arrayLength; i++) {
+                heartbeatBuffer.push(item.Value[i])
             }
         }
-    }
-    
-});
+    })
+})
 
-let UDPtestMsg = Buffer.from(heartbeatBuffer)
+const UDPtestMsg = Buffer.from(heartbeatBuffer)
 
 const client = dgram.createSocket('udp4')
 client.bind(PORT)

@@ -28,6 +28,7 @@
         "no-underscore-dangle": 0,
         "object-curly-newline": 0,
         "max-len": 0,
-        "no-unused-vars": ["warn"]
+        "no-unused-vars": ["warn"],
+        "no-bitwise": 0
     }
 }

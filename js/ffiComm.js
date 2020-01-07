@@ -3,6 +3,7 @@ const ffi = require('ffi')
 const ref = require('ref')
 const Struct = require('ref-struct')
 const ArrayType = require('ref-array')
+const refPCAN = require('../pCAN/PCANconstants')
 
 // Types
 const { ulong } = ref.types
@@ -129,16 +130,9 @@ function sendPCAN(command, inputs) {
 
 
 // Initialize DLL
-const refPCAN = require('../pCAN/PCANconstants')
-
-// const PCAN_USBBUS1 = 81
-// const PCAN_BAUD_50K = 18223
-// sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
-
 const PCAN_USBBUS1 = parseInt(refPCAN.PCAN_USBBUS1, 16)
 const PCAN_BAUD_50K = parseInt(refPCAN.PCAN_BAUD_50K, 16)
 sendPCAN('CAN_Initialize', [PCAN_USBBUS1, PCAN_BAUD_50K, 0, 0, 0])
-
 
 // Temporary variables
 const TPCANWRITEmsg = new TPCANMsg({
@@ -180,17 +174,19 @@ $('#PCANWrite').on('click', () => {
 //     sendPCAN('CAN_FilterMessages', [PCAN_USBBUS1, 0, 0, 0])
 // })
 
-// // CAN_GetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, BufferLength]],
+// // CAN_GetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr Buffer, Buffer.length]],
 // $('#PCAN_GetValue').on('click', () => {
-//     sendPCAN('CAN_GetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
+//     let Buffer = ref.alloc(TPCANMsg);
+//     sendPCAN('CAN_GetValue', [PCAN_USBBUS1, 0, Buffer, 0])
 // })
 
-// // CAN_SetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr, BufferLength]],
+// // CAN_SetValue: [TPCANStatus, [TPCANHandle, TPCANParameter, voidPtr Buffer, Buffer.length]],
 // $('#PCAN_SetValue').on('click', () => {
-//     sendPCAN('CAN_SetValue', [PCAN_USBBUS1, 0, voidPtr, 0])
+//     let Buffer = ref.alloc(TPCANMsg);
+//     sendPCAN('CAN_SetValue', [PCAN_USBBUS1, 0, Buffer, 0])
 // })
 
-// // CAN_GetErrorText: [TPCANStatus, [TPCANStatus, ushort, TPCANBitrateFD]]
+// // CAN_GetErrorText: [TPCANStatus, [TPCANStatus Error, Language, Buffer]]
 // $('#PCAN_GetErrorText').on('click', () => {
-//     sendPCAN('CAN_GetErrorText', [PCAN_USBBUS1, 0, PCAN_BAUD_50K])
+//      sendPCAN('CAN_GetErrorText', [PCAN_USBBUS1, 0, refPCAN.English, char*])
 // })
